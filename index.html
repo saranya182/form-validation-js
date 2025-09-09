@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Module 7 - Form Handling & Validation</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    form { background: #f9f9f9; padding: 18px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .form-control { margin-bottom: 12px; }
+    .form-control label { display:block; margin-bottom:6px; }
+    .form-control input { width:100%; padding:8px 10px; border:1px solid #ccc; border-radius:4px; }
+    .form-control small { display:block; margin-top:6px; color:#d93025; visibility: hidden; } /* hidden by default */
+    .form-control.error input { border-color:#d93025; }
+    .form-control.error small { visibility: visible; }
+    .form-control.success input { border-color:#34a853; }
+    .success-message { background: #e6f7e9; color:#176e3b; padding:10px; border-radius:6px; display:none; margin-top:10px; }
+    .btn { padding:10px 14px; border: none; border-radius:4px; background:#1a73e8; color:white; cursor:pointer; }
+    .btn:disabled { background:#9bbcf8; cursor:not-allowed; }
+    /* Simple modal for advanced example */
+    .modal { position: fixed; left:0; top:0; right:0; bottom:0; background: rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; visibility: hidden; }
+    .modal.visible { visibility: visible; }
+    .modal-content { background:white; padding:20px; border-radius:8px; max-width:90%; box-shadow:0 2px 8px rgba(0,0,0,0.3); text-align:center; }
+  </style>
+</head>
+<body>
+
+  <h1>Register (Module 7)</h1>
+
+  <form id="registerForm" novalidate>
+    <!-- Username -->
+    <div class="form-control" id="usernameControl">
+      <label for="username">Username *</label>
+      <input type="text" id="username" name="username" placeholder="Your username" />
+      <small aria-live="polite"></small>
+    </div>
+
+    <!-- Email -->
+    <div class="form-control" id="emailControl">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" />
+      <small aria-live="polite"></small>
+    </div>
+
+    <!-- Password -->
+    <div class="form-control" id="passwordControl">
+      <label for="password">Password * (min 6 characters)</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" />
+      <small aria-live="polite"></small>
+    </div>
+
+    <!-- Confirm password (for advanced example) -->
+    <div class="form-control" id="confirmControl">
+      <label for="confirmPassword">Confirm Password *</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" />
+      <small aria-live="polite"></small>
+    </div>
+
+    <button class="btn" id="submitBtn" type="submit">Register</button>
+
+    <div class="success-message" id="successMessage" role="status" aria-live="polite"></div>
+  </form>
+
+  <!-- Modal (advanced) -->
+  <div class="modal" id="successModal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <h2>Success!</h2>
+      <p id="modalText">You have been registered.</p>
+      <button class="btn" id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
